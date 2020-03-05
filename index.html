@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog</title>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="assets/nodeschool.png"/>
+  <link rel="stylesheet" href="style.css"/>
+
+  <script type="module" src="dist/index.js"></script>
+</head>
+<body>
+  <blog-app id="blogApp"></blog-app>
+
+  <script type="module">
+    import { posts } from "./dist";
+    const blogApp = document.getElementById("blogApp");
+    blogApp.posts = posts;
+    blogApp.addEventListener("comment-added", (event) => {
+      console.log("Mock of sending new comment to the repository", event.comment);
+    });
+  </script>
+</body>
+</html>
