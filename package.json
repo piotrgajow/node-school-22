@@ -1,0 +1,21 @@
+{
+  "name": "node-school-22",
+  "version": "1.0.0",
+  "description": "Blog application made with web components",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://https://github.com/piotrgajow/node-school-22.git"
+  },
+  "scripts": {
+    "start": "http-server -e .js -o index.html",
+    "tsc:watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Piotr Gajowniczek",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.1",
+    "typescript": "^3.8.3"
+  }
+}
