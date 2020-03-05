@@ -6,6 +6,7 @@ export const style = `
 :host {
     display: block; 
     margin-bottom: 50px;
+    color: var(--text-primary-color);
 }
 
 img {

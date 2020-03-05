@@ -13,5 +13,6 @@ export const style = `
 
 .${CLASS_HEADER} {
     margin-left: 20px;
+    color: var(--text-secondary-color);
 }
 `;

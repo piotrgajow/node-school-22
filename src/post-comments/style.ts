@@ -17,5 +17,6 @@ export const style = `
 #${ID_EMPTY} {
     text-align: center;
     font-size: smaller;
+    color: var(--text-secondary-color)
 }
 `;

@@ -4,6 +4,6 @@ import { CLASS_DETAILS } from './constants';
 export const style = `
 .${CLASS_DETAILS} {
     font-size: 0.7em;
-    color: #41484C;
+    color: var(--text-secondary-color);
 }
 `;

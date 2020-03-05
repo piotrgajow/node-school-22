@@ -8,5 +8,6 @@ export const style = `
 
 .${CLASS_DETAILS} {
     font-size: small;
+    color: var(--text-secondary-color);
 }
 `;
