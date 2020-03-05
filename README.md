@@ -4,8 +4,8 @@ This is a simple blog application for [Node School](https://nodeschool.io/lodz/)
 
 ## Usage
 
-`npm run tsc:watch` - runs process that compiles typescript files in the background.
-`npm run start` - starts simple web server for app hosting
+- `npm run tsc:watch` - runs process that compiles typescript files in the background.
+- `npm run start` - starts simple web server for app hosting
 
 ## Repository
 
