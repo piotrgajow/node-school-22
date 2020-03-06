@@ -8,12 +8,10 @@ export class BlogComment extends HTMLElement {
     public static observedAttributes = [ATTRIBUTE_AUTHOR, ATTRIBUTE_TIMESTAMPT];
 
     public set author(author: string) {
-        this._authorElement.innerText = author;
         this.setAttribute(ATTRIBUTE_AUTHOR, author);
     }
 
     public set timestamp(timestamp: string) {
-        this._timestampElement.innerText = timestamp;
         this.setAttribute(ATTRIBUTE_TIMESTAMPT, timestamp);
     }
 
@@ -35,8 +33,13 @@ export class BlogComment extends HTMLElement {
     }
 
     public attributeChangedCallback(name: keyof this, oldValue: any, newValue: any): void {
-        if (oldValue !== newValue) {
-            this[name] = newValue;
+        switch (name) {
+            case ATTRIBUTE_AUTHOR:
+                this._authorElement.innerText = newValue;
+                break;
+            case ATTRIBUTE_TIMESTAMPT:
+                this._timestampElement.innerText = newValue;
+                break;
         }
     }
 

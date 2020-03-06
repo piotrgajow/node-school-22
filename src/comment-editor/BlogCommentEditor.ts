@@ -13,7 +13,6 @@ export class BlogCommentEditor extends HTMLElement {
     public static observedAttributes = [ATTRIBUTE_POST_ID];
 
     public set postId(postId: string) {
-        this._postId = postId;
         this.setAttribute(ATTRIBUTE_POST_ID, postId);
     }
 
@@ -43,8 +42,8 @@ export class BlogCommentEditor extends HTMLElement {
     }
 
     public attributeChangedCallback(name: keyof this, oldValue: any, newValue: any): void {
-        if (oldValue !== newValue) {
-            this[name] = newValue;
+        if (name === ATTRIBUTE_POST_ID) {
+            this._postId = newValue;
         }
     }
 
