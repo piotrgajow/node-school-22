@@ -13,7 +13,9 @@
   <script>
     class Hello extends HTMLElement {
 
-      static observedAttributes = ["target"];
+      static get observedAttributes() {
+          return ["target"];
+      }
 
       set target(target) {
         this.setAttribute("target", target);

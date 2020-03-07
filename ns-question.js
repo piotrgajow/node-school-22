@@ -1,6 +1,8 @@
 export class Question extends HTMLElement {
 
-    static observedAttributes = ["question", "option-a", "option-b"];
+    static get observedAttributes() {
+        return ["question", "option-a", "option-b"];
+    }
 
     constructor() {
         super();
