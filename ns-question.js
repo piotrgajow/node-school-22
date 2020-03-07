@@ -15,8 +15,14 @@ export class Question extends HTMLElement {
         this.questionElement = element.getElementById("question");
         this.optionAElement = element.querySelector('slot[name="option-a"]');
         this.optionBElement = element.querySelector('slot[name="option-b"]');
-        console.log(this.optionAElement);
-        console.log(this.optionAElement.firstChild);
+
+        Array.from(element.querySelectorAll("slot"))
+            .forEach((slot) => {
+                slot.addEventListener("slotchange", (event) => {
+                    console.log(1, event.currentTarget);
+                    console.log(2, event.currentTarget.assignedNodes());
+                });
+            });
 
         shadowRoot.appendChild(element);
 
