@@ -26,30 +26,30 @@
 
       static observedAttributes = ["question", "option-a", "option-b"];
 
-      connectedCallback() {
-        this.render();
-      }
-
-      disconnectedCallback() {
-
-      }
-
-      attributeChangedCallback(name, oldValue, newValue) {
-        if (oldValue !== newValue) {
-          this.render();
-        }
-      }
-
-      render() {
-        this.innerHTML = "";
+      constructor() {
+        super();
         const template = document.getElementById("ns-question");
         const element = template.content.cloneNode(true);
 
-        element.getElementById("question").innerText = this.getAttribute("question");
-        element.getElementById("a").innerText = this.getAttribute("option-a") || "Tak";
-        element.getElementById("b").innerText = this.getAttribute("option-b") || "Nie";
-
+        this.rootElement = element;
+        this.questionElement = element.getElementById("question");
+        this.optionAElement = element.getElementById("a");
+        this.optionBElement = element.getElementById("b");
         this.appendChild(element);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        switch (name) {
+          case "question":
+            this.questionElement.textContent = newValue;
+            break;
+          case "option-a":
+            this.optionAElement.textContent = newValue;
+            break;
+          case "option-b":
+            this.optionBElement.textContent = newValue;
+            break;
+        }
       }
 
     }
