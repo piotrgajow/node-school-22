@@ -33,16 +33,30 @@
       }
     </style>
     <h2 id="question"></h2>
-    <p part="option">a) <span id="a"></span></p>
-    <p part="option">b) <span id="b"></span></p>
+    <p part="option">
+      a)
+      <slot name="option-a"></slot>
+    </p>
+    <p part="option">
+      b)
+      <slot name="option-b"></slot>
   </template>
 
   <ns-question
           id="question1"
           question="Czy Node School jest fajny?"
-          option-a="Tak"
-          option-b="Nie"
-  ></ns-question>
+  >
+    <span slot="option-a">Tak</span>
+    <span slot="option-b">Nie</span>
+  </ns-question>
+
+   <ns-question
+           id="question2"
+           question="Który framework wolisz?"
+   >
+    <img slot="option-a" src="https://w0.pngwave.com/png/856/564/react-logo-javascript-front-and-back-ends-user-interface-others-png-clip-art.png"/>
+    <img slot="option-b" src="https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/300/full/angular2.png"/>
+  </ns-question>
 
   <script type="module" src="ns-question.js"></script>
   <script type="module" src="ns-question.js"></script>
@@ -50,6 +64,9 @@
   <script>
     question1.addEventListener("option-select", (event) => {
       console.log("Custom event received: ", event.detail);
+    });
+    question2.addEventListener("option-select", (event) => {
+      console.log("Custom event received from image: ", event.detail);
     });
     setTimeout(() => {
       document.documentElement.style.setProperty("--text-primary-color", "pink");

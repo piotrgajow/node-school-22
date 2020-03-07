@@ -6,15 +6,17 @@ export class Question extends HTMLElement {
 
     constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: "closed" });
+        const shadowRoot = this.attachShadow({ mode: "open" });
 
         const template = document.getElementById("ns-question");
         const element = template.content.cloneNode(true);
 
         this.rootElement = element;
         this.questionElement = element.getElementById("question");
-        this.optionAElement = element.getElementById("a");
-        this.optionBElement = element.getElementById("b");
+        this.optionAElement = element.querySelector('slot[name="option-a"]');
+        this.optionBElement = element.querySelector('slot[name="option-b"]');
+        console.log(this.optionAElement);
+        console.log(this.optionAElement.firstChild);
 
         shadowRoot.appendChild(element);
 
