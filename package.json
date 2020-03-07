@@ -1,0 +1,15 @@
+{
+  "name": "node-school-22",
+  "version": "1.0.0",
+  "description": "Blog application made with web components",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -e .js -o index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Piotr Gajowniczek",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^0.12.1"
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web components</title>
+</head>
+<body>
+  <h2>Hello World</h2>
+  <ns-hello id="hello1"></ns-hello>
+  <ns-hello target="World"></ns-hello>
+  <ns-hello target="Web Components"></ns-hello>
+
+  <script>
+    class Hello extends HTMLElement {
+
+      static observedAttributes = ["target"];
+
+      set target(target) {
+        this.setAttribute("target", target);
+      }
+
+      set customObject(object) {
+        this.setAttribute("target", object.target);
+      }
+
+      connectedCallback() {
+        const target = this.getAttribute("target") || "World";
+        this.innerHTML = `<h2>Hello ${target}</h2>`;
+      }
+
+      disconnectedCallback() {
+
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        if (name === "target" && oldValue !== newValue) {
+          this.innerHTML = `<h2>Hello ${newValue}</h2>`;
+        }
+      }
+
+    }
+
+    customElements.define("ns-hello", Hello);
+
+    setTimeout(() => hello1.customObject = { target: "Node School" }, 1000);
+  </script>
+</body>
+</html>
