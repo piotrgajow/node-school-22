@@ -9,6 +9,12 @@
   <p>a) Tak</p>
   <p>b) Nie</p>
 
+  <template id="ns-question">
+    <h2 id="question"></h2>
+    <p>a) <span id="a"></span></p>
+    <p>b) <span id="b"></span></p>
+  </template>
+
   <ns-question
           question="Czy Node School jest fajny?"
           option-a="Tak"
@@ -35,12 +41,15 @@
       }
 
       render() {
-        const question = this.getAttribute("question");
-        const a = this.getAttribute("option-a") || "Tak";
-        const b = this.getAttribute("option-b") || "Nie";
-        this.innerHTML = `<h2>${question}</h2>
-  <p>a) ${a}</p>
-  <p>b) ${b}</p>`;
+        this.innerHTML = "";
+        const template = document.getElementById("ns-question");
+        const element = template.content.cloneNode(true);
+
+        element.getElementById("question").innerText = this.getAttribute("question");
+        element.getElementById("a").innerText = this.getAttribute("option-a") || "Tak";
+        element.getElementById("b").innerText = this.getAttribute("option-b") || "Nie";
+
+        this.appendChild(element);
       }
 
     }
