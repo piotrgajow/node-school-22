@@ -16,6 +16,7 @@
   </template>
 
   <ns-question
+          id="question1"
           question="Czy Node School jest fajny?"
           option-a="Tak"
           option-b="Nie"
@@ -36,6 +37,29 @@
         this.optionAElement = element.getElementById("a");
         this.optionBElement = element.getElementById("b");
         this.appendChild(element);
+
+        this.onOptionASelect = this.selectOption.bind(this, "a");
+        this.onOptionBSelect = this.selectOption.bind(this, "b");
+      }
+
+      connectedCallback() {
+        this.optionAElement.addEventListener("click", this.onOptionASelect);
+        this.optionBElement.addEventListener("click", this.onOptionBSelect);
+      }
+
+      disconnectedCallback() {
+        this.optionAElement.removeEventListener("click", this.onOptionASelect);
+        this.optionBElement.removeEventListener("click", this.onOptionBSelect);
+      }
+
+      selectOption(option) {
+        const event = new CustomEvent("option-select", {
+          detail: option,
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+        });
+        this.dispatchEvent(event);
       }
 
       attributeChangedCallback(name, oldValue, newValue) {
@@ -55,6 +79,10 @@
     }
 
     customElements.define("ns-question", Question);
+
+    question1.addEventListener("option-select", (event) => {
+      console.log("Custom event received: ", event.detail);
+    });
   </script>
 </body>
 </html>
