@@ -12,6 +12,10 @@
     h2 {
       color: blue;
     }
+
+    ns-question::part(option) {
+      font-size: x-large;
+    }
   </style>
 </head>
 <body>
@@ -29,8 +33,8 @@
       }
     </style>
     <h2 id="question"></h2>
-    <p>a) <span id="a"></span></p>
-    <p>b) <span id="b"></span></p>
+    <p part="option">a) <span id="a"></span></p>
+    <p part="option">b) <span id="b"></span></p>
   </template>
 
   <ns-question
