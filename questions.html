@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web components</title>
+</head>
+<body>
+  <h2>Czy Node School jest fajny?</h2>
+  <p>a) Tak</p>
+  <p>b) Nie</p>
+
+  <ns-question
+          question="Czy Node School jest fajny?"
+          option-a="Tak"
+          option-b="Nie"
+  ></ns-question>
+
+  <script>
+    class Question extends HTMLElement {
+
+      static observedAttributes = ["question", "option-a", "option-b"];
+
+      connectedCallback() {
+        this.render();
+      }
+
+      disconnectedCallback() {
+
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        if (oldValue !== newValue) {
+          this.render();
+        }
+      }
+
+      render() {
+        const question = this.getAttribute("question");
+        const a = this.getAttribute("option-a") || "Tak";
+        const b = this.getAttribute("option-b") || "Nie";
+        this.innerHTML = `<h2>${question}</h2>
+  <p>a) ${a}</p>
+  <p>b) ${b}</p>`;
+      }
+
+    }
+
+    customElements.define("ns-question", Question);
+  </script>
+</body>
+</html>
