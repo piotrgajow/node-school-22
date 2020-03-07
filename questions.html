@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <title>Web components</title>
 
+  <style>
+    :root {
+      --text-primary-color: brown;
+    }
+
+    h2 {
+      color: blue;
+    }
+  </style>
 </head>
 <body>
   <h2>Czy Node School jest fajny?</h2>
@@ -11,6 +20,14 @@
   <p>b) Nie</p>
 
   <template id="ns-question">
+    <style>
+      h2 {
+        color: var(--text-primary-color, black);
+      }
+      p {
+        background-color: green;
+      }
+    </style>
     <h2 id="question"></h2>
     <p>a) <span id="a"></span></p>
     <p>b) <span id="b"></span></p>
@@ -30,6 +47,9 @@
     question1.addEventListener("option-select", (event) => {
       console.log("Custom event received: ", event.detail);
     });
+    setTimeout(() => {
+      document.documentElement.style.setProperty("--text-primary-color", "pink");
+    }, 2000);
   </script>
 </body>
 </html>
